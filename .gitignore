@@ -1,33 +1,101 @@
+# =============================
+# Arquivos de ajuda / documentação
+# =============================
 HELP.md
+
+# =============================
+# Maven
+# =============================
 target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### STS ###
+# =============================
+# Gradle
+# =============================
+.gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+gradle-app.setting
+gradle-wrapper.jar
+gradle-wrapper.properties
+out/
+
+# =============================
+# Eclipse / STS
+# =============================
 .apt_generated
 .classpath
 .factorypath
 .project
-.settings
+.settings/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
-.idea
+# =============================
+# IntelliJ IDEA
+# =============================
+.idea/
 *.iws
 *.iml
 *.ipr
+out/
 
-### NetBeans ###
+# =============================
+# NetBeans
+# =============================
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
 
-### VS Code ###
+# =============================
+# VS Code
+# =============================
 .vscode/
+
+# =============================
+# Logs e arquivos temporários
+# =============================
+*.log
+*.tmp
+*.swp
+*.DS_Store
+*.bak
+*.orig
+*.rej
+*.diff
+*.patch
+
+# =============================
+# Arquivos de compilação / pacotes
+# =============================
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# =============================
+# Arquivos de execução / configuração local
+# =============================
+.env
+.env.local
+*.keystore
+*.jks
+*.pem
+
+# =============================
+# Testes e relatórios
+# =============================
+/test-output/
+/surefire-reports/
+/failsafe-reports/
+/jacoco/
+/coverage/
+/*.hprof
