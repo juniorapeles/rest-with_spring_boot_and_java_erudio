@@ -61,9 +61,10 @@ public class MathController {
     // http:://localhost:8080/math/media/3/5
     @RequestMapping("/average/{number}/{second}")
     public Double average(
-            @PathVariable String number
+            @PathVariable String first,
+            @PathVariable String second
     ) {
-        return mathService.avg(number);
+        return mathService.avg(first,second);
     }
 
 
