@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 public class MathService implements IMathService {
 
     private static final int AVERAGE_NUMBER = 2;
-    private static final String MSG_DIVIDE_BY_ZERO = "Cannot divide by zero";
 
     private final IMathValidator validator;
 
