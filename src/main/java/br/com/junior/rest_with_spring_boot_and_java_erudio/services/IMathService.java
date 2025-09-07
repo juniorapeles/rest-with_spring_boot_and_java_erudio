@@ -8,3 +8,4 @@ public interface IMathService {
     Double sqrt(String number);
     Double avg(String first, String second);
 }
+
