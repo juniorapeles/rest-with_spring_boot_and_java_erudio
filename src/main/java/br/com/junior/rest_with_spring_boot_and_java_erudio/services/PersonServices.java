@@ -24,7 +24,7 @@ public class PersonServices {
         logger.info("Finding one Person!");
 
         return personRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));
+                .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
     }
 
     public List<Person> findAll() {

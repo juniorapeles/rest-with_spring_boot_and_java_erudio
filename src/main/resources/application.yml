@@ -1,5 +1,4 @@
 spring:
-
   application:
     name: rest-with-spring-boot-and-java-erudio
   datasource:
@@ -13,5 +12,9 @@ spring:
     properties:
       hibernate:
         #dialect: org.hibernate.dialect.PostgreSQLDialect
-        show_sql: true
+        #show_sql: true
     open-in-view: false
+logging:
+  level:
+    #root: WARN
+    br.com.junior: DEBUG
