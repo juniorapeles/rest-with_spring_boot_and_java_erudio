@@ -2,16 +2,16 @@ package br.com.junior.rest_with_spring_boot_and_java_erudio.controller;
 
 import br.com.junior.rest_with_spring_boot_and_java_erudio.commons.IMathValidator;
 import br.com.junior.rest_with_spring_boot_and_java_erudio.services.IMathService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(MathController.URL_PATH)
 public class MathController {
 
     public static final String URL_PATH = "/math/";
-    private final IMathService mathService;
-    private final IMathValidator validator;
-
     private static final String FIRST_SECOND = "/{first}/{second}";
     private static final String SUM_PATH = "sum" + FIRST_SECOND;
     private static final String SUB_PATH = "subtract" + FIRST_SECOND;
@@ -19,6 +19,9 @@ public class MathController {
     private static final String DIV_PATH = "divide" + FIRST_SECOND;
     private static final String AVG_PATH = "average" + FIRST_SECOND;
     private static final String SQRT_PATH = "square-root/{number}";
+
+    private final IMathService mathService;
+    private final IMathValidator validator;
 
     public MathController(IMathService mathService, IMathValidator validator) {
         this.mathService = mathService;
