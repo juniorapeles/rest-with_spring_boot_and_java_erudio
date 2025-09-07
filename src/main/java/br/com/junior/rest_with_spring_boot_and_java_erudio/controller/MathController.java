@@ -5,24 +5,25 @@ import br.com.junior.rest_with_spring_boot_and_java_erudio.services.IMathService
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/math")
+@RequestMapping(MathController.URL_PATH)
 public class MathController {
 
+    public static final String URL_PATH = "/math/";
     private final IMathService mathService;
     private final IMathValidator validator;
 
     private static final String FIRST_SECOND = "/{first}/{second}";
-    private static final String SUM_PATH = "/sum" + FIRST_SECOND;
-    private static final String SUB_PATH = "/subtract" + FIRST_SECOND;
-    private static final String MUL_PATH = "/multiply" + FIRST_SECOND;
-    private static final String DIV_PATH = "/divide" + FIRST_SECOND;
-    private static final String AVG_PATH = "/average" + FIRST_SECOND;
-    private static final String SQRT_PATH = "/square-root/{number}";
+    private static final String SUM_PATH = "sum" + FIRST_SECOND;
+    private static final String SUB_PATH = "subtract" + FIRST_SECOND;
+    private static final String MUL_PATH = "multiply" + FIRST_SECOND;
+    private static final String DIV_PATH = "divide" + FIRST_SECOND;
+    private static final String AVG_PATH = "average" + FIRST_SECOND;
+    private static final String SQRT_PATH = "square-root/{number}";
 
     public MathController(IMathService mathService, IMathValidator validator) {
         this.mathService = mathService;
         this.validator = validator;
-    }//ssh-keygen -t ed25519 -C "elijunior.apeles2005@gmail.com"
+    }
 
     @GetMapping(SUM_PATH)
     public Double sum(@PathVariable String first, @PathVariable String second) {
