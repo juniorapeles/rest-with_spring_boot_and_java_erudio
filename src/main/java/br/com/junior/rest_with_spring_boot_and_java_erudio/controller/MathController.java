@@ -22,7 +22,7 @@ public class MathController {
     public MathController(IMathService mathService, IMathValidator validator) {
         this.mathService = mathService;
         this.validator = validator;
-    }
+    }//ssh-keygen -t ed25519 -C "elijunior.apeles2005@gmail.com"
 
     @GetMapping(SUM_PATH)
     public Double sum(@PathVariable String first, @PathVariable String second) {
