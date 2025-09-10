@@ -1,7 +1,6 @@
 package br.com.junior.rest_with_spring_boot_and_java_erudio.services;
 
 import br.com.junior.rest_with_spring_boot_and_java_erudio.data.dto.v1.PersonDTOV1;
-import br.com.junior.rest_with_spring_boot_and_java_erudio.data.dto.v2.PersonDTOV2;
 import br.com.junior.rest_with_spring_boot_and_java_erudio.exception.ResourceNotFoundException;
 import br.com.junior.rest_with_spring_boot_and_java_erudio.mapper.custom.PersonMapper;
 import br.com.junior.rest_with_spring_boot_and_java_erudio.model.Person;
@@ -48,11 +47,6 @@ public class PersonServices {
         return parseObject(personRepository.save(entity), PersonDTOV1.class);
     }
 
-    public PersonDTOV2 createV2(PersonDTOV2 dto) {
-        logger.info("Create one Person V2!");
-        var entity = converter.cnovertDTOToEntity(dto);
-        return converter.convertEntityToDTO(personRepository.save(entity));
-    }
 
     public PersonDTOV1 updatePerson(PersonDTOV1 dto) {
         logger.info("Updating one Person!");
