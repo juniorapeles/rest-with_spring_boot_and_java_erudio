@@ -72,6 +72,17 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>10.20.1</version>
+                <configuration>
+                    <url>jdbc:postgresql://localhost:5432/rest_with_spring_boot_erudio</url>
+                    <user>postgres</user>
+                    <password>pass</password>
+                    <schemas>public</schemas>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
