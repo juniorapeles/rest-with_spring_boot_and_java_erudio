@@ -1,6 +1,7 @@
 package br.com.junior.rest_with_spring_boot_and_java_erudio.exception.handler;
 
 import br.com.junior.rest_with_spring_boot_and_java_erudio.exception.ExceptionResponse;
+import br.com.junior.rest_with_spring_boot_and_java_erudio.exception.RequiredObjectIsNullException;
 import br.com.junior.rest_with_spring_boot_and_java_erudio.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +36,16 @@ public class CustomEntityRespondeHandler extends ResponseEntityExceptionHandler 
                 request.getDescription(false)
         );
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(RequiredObjectIsNullException.class)
+    public final ResponseEntity<ExceptionResponse> handleBadRequestExceptions(Exception ex, WebRequest request) {
+        ExceptionResponse response = new ExceptionResponse(
+                new Date(),
+                ex.getMessage(),
+                request.getDescription(false)
+        );
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
 }

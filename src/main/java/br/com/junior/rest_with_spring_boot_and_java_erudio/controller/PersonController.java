@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping(PersonController.PATH_URL)
 public class PersonController {
 
-    public static final String PATH_URL = "/person/v1";
+    public static final String PATH_URL = "api/person/v1";
     public static final String PATH_ID = "/{id}";
 
     @Autowired

@@ -2,17 +2,19 @@ package br.com.junior.rest_with_spring_boot_and_java_erudio.services;
 
 import br.com.junior.rest_with_spring_boot_and_java_erudio.controller.PersonController;
 import br.com.junior.rest_with_spring_boot_and_java_erudio.data.dto.v1.PersonDTO;
+import br.com.junior.rest_with_spring_boot_and_java_erudio.exception.RequiredObjectIsNullException;
 import br.com.junior.rest_with_spring_boot_and_java_erudio.exception.ResourceNotFoundException;
+import br.com.junior.rest_with_spring_boot_and_java_erudio.mapper.PersonMapper;
 import br.com.junior.rest_with_spring_boot_and_java_erudio.model.Person;
 import br.com.junior.rest_with_spring_boot_and_java_erudio.repositories.PersonRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static br.com.junior.rest_with_spring_boot_and_java_erudio.mapper.ObjectMapper.parseListObjects;
-import static br.com.junior.rest_with_spring_boot_and_java_erudio.mapper.ObjectMapper.parseObject;
+
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
@@ -21,9 +23,11 @@ public class PersonServices {
 
     private final Logger logger = LoggerFactory.getLogger(PersonServices.class);
     private final PersonRepository personRepository;
+    private final PersonMapper mapper;
 
-    public PersonServices(PersonRepository personRepository) {
+    public PersonServices(PersonRepository personRepository, PersonMapper mapper) {
         this.personRepository = personRepository;
+        this.mapper = mapper;
     }
 
     public PersonDTO findById(Long id) {
@@ -31,28 +35,33 @@ public class PersonServices {
         Person person = personRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
 
-        var dto = parseObject(person, PersonDTO.class);
+        var dto = mapper.parseObject(person);
         addHateoasLinks(dto);
         return dto;
     }
 
     public List<PersonDTO> findAll() {
         logger.info("Finding all People!");
-        List<PersonDTO> personDTOS = parseListObjects(personRepository.findAll(), PersonDTO.class);
+        List<PersonDTO> personDTOS = mapper.parseListObjects(personRepository.findAll());
         personDTOS.forEach(this::addHateoasLinks);
         return personDTOS;
     }
 
+
     public PersonDTO create(PersonDTO dto) {
+
+        if (dto == null) throw new RequiredObjectIsNullException();
+
         logger.info("Create one Person!");
-        var entity = parseObject(dto, Person.class);
-        PersonDTO personDTO = parseObject(personRepository.save(entity), PersonDTO.class);
+        var entity = mapper.parseObject(dto);
+        PersonDTO personDTO = mapper.parseObject(personRepository.save(entity));
         addHateoasLinks(personDTO);
         return personDTO;
     }
 
 
     public PersonDTO updatePerson(PersonDTO dto) {
+        if (dto == null) throw new RequiredObjectIsNullException();
         logger.info("Updating one Person!");
 
         Person entity = personRepository.findById(dto.getId())
@@ -63,7 +72,7 @@ public class PersonServices {
         entity.setAddress(dto.getAddress());
         entity.setGender(dto.getGender());
 
-        PersonDTO personDTO = parseObject(personRepository.save(entity), PersonDTO.class);
+        PersonDTO personDTO = mapper.parseObject(personRepository.save(entity));
         addHateoasLinks(personDTO);
         return personDTO;
     }
