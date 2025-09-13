@@ -1,7 +1,7 @@
 package br.com.junior.rest_with_spring_boot_and_java_erudio.controller;
 
 
-import br.com.junior.rest_with_spring_boot_and_java_erudio.data.dto.v1.PersonDTOV1;
+import br.com.junior.rest_with_spring_boot_and_java_erudio.data.dto.v1.PersonDTO;
 import br.com.junior.rest_with_spring_boot_and_java_erudio.services.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -21,22 +21,22 @@ public class PersonController {
     private PersonServices service;
 
     @GetMapping(value = PATH_ID, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE})
-    public PersonDTOV1 findById(@PathVariable("id") Long id) {
+    public PersonDTO findById(@PathVariable("id") Long id) {
         return service.findById(id);
     }
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE})
-    public List<PersonDTOV1> findAll() {
+    public List<PersonDTO> findAll() {
         return service.findAll();
     }
 
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE})
-    public PersonDTOV1 create(@RequestBody PersonDTOV1 person) {
+    public PersonDTO create(@RequestBody PersonDTO person) {
         return service.create(person);
     }
 
     @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE})
-    public PersonDTOV1 update(@RequestBody PersonDTOV1 person) {
+    public PersonDTO update(@RequestBody PersonDTO person) {
         return service.updatePerson(person);
     }
 

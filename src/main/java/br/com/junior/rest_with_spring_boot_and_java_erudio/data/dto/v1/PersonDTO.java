@@ -1,11 +1,13 @@
 package br.com.junior.rest_with_spring_boot_and_java_erudio.data.dto.v1;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
 
-public class PersonDTOV1 implements Serializable {
+public class PersonDTO extends RepresentationModel<PersonDTO> implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -15,10 +17,10 @@ public class PersonDTOV1 implements Serializable {
     private String address;
     private String gender;
 
-    public PersonDTOV1() {
+    public PersonDTO() {
     }
 
-    public PersonDTOV1(Long id, String firstName, String lastName, String address, String gender) {
+    public PersonDTO(Long id, String firstName, String lastName, String address, String gender) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -69,7 +71,7 @@ public class PersonDTOV1 implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        PersonDTOV1 person = (PersonDTOV1) o;
+        PersonDTO person = (PersonDTO) o;
         return Objects.equals(id, person.id) && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(address, person.address) && Objects.equals(gender, person.gender);
     }
 

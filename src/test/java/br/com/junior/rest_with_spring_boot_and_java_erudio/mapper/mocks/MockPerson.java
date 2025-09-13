@@ -1,6 +1,6 @@
 package br.com.junior.rest_with_spring_boot_and_java_erudio.mapper.mocks;
 
-import br.com.junior.rest_with_spring_boot_and_java_erudio.data.dto.v1.PersonDTOV1;
+import br.com.junior.rest_with_spring_boot_and_java_erudio.data.dto.v1.PersonDTO;
 import br.com.junior.rest_with_spring_boot_and_java_erudio.model.Person;
 
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ public class MockPerson {
         return mockEntity(0);
     }
 
-    public PersonDTOV1 mockDTO() {
+    public PersonDTO mockDTO() {
         return mockDTO(0);
     }
 
@@ -23,8 +23,8 @@ public class MockPerson {
         return persons;
     }
 
-    public List<PersonDTOV1> mockDTOList() {
-        List<PersonDTOV1> persons = new ArrayList<>();
+    public List<PersonDTO> mockDTOList() {
+        List<PersonDTO> persons = new ArrayList<>();
         for (int i = 0; i < 14; i++) {
             persons.add(mockDTO(i));
         }
@@ -41,8 +41,8 @@ public class MockPerson {
         return person;
     }
 
-    public PersonDTOV1 mockDTO(Integer number) {
-        PersonDTOV1 person = new PersonDTOV1();
+    public PersonDTO mockDTO(Integer number) {
+        PersonDTO person = new PersonDTO();
         person.setAddress("Address Test" + number);
         person.setFirstName("First Name Test" + number);
         person.setGender(((number % 2)==0) ? "Male" : "Female");
