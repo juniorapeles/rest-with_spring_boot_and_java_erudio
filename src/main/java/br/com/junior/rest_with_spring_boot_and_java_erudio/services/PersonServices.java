@@ -2,16 +2,13 @@ package br.com.junior.rest_with_spring_boot_and_java_erudio.services;
 
 import br.com.junior.rest_with_spring_boot_and_java_erudio.data.dto.v1.PersonDTOV1;
 import br.com.junior.rest_with_spring_boot_and_java_erudio.exception.ResourceNotFoundException;
-import br.com.junior.rest_with_spring_boot_and_java_erudio.mapper.custom.PersonMapper;
 import br.com.junior.rest_with_spring_boot_and_java_erudio.model.Person;
 import br.com.junior.rest_with_spring_boot_and_java_erudio.repositories.PersonRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 
 import static br.com.junior.rest_with_spring_boot_and_java_erudio.mapper.ObjectMapper.parseListObjects;
 import static br.com.junior.rest_with_spring_boot_and_java_erudio.mapper.ObjectMapper.parseObject;
@@ -19,14 +16,12 @@ import static br.com.junior.rest_with_spring_boot_and_java_erudio.mapper.ObjectM
 @Service
 public class PersonServices {
 
-    private final AtomicLong counter = new AtomicLong();
-    private Logger logger = LoggerFactory.getLogger(PersonServices.class);
+    private final Logger logger = LoggerFactory.getLogger(PersonServices.class);
+    private final PersonRepository personRepository;
 
-    @Autowired
-    private PersonRepository personRepository;
-
-    @Autowired
-    private PersonMapper converter;
+    public PersonServices(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
 
     public PersonDTOV1 findById(Long id) {
         logger.info("Finding one Person!");
