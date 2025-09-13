@@ -5,12 +5,18 @@ import br.com.junior.rest_with_spring_boot_and_java_erudio.mapper.mocks.MockPers
 import br.com.junior.rest_with_spring_boot_and_java_erudio.model.Person;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mapstruct.factory.Mappers;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@ExtendWith(MockitoExtension.class)
 public class ObjectMapperTests {
 
     private MockPerson inputObject;

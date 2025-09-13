@@ -25,6 +25,7 @@ public class PersonServices {
     private final PersonRepository personRepository;
     private final PersonMapper mapper;
 
+    @Autowired
     public PersonServices(PersonRepository personRepository, PersonMapper mapper) {
         this.personRepository = personRepository;
         this.mapper = mapper;
