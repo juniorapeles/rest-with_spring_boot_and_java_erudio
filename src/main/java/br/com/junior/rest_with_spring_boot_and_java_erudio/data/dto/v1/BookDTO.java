@@ -1,10 +1,12 @@
 package br.com.junior.rest_with_spring_boot_and_java_erudio.data.dto.v1;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class BookDTO implements Serializable {
+public class BookDTO extends RepresentationModel<BookDTO> implements Serializable {
 
     private Long id;
     private String author;
