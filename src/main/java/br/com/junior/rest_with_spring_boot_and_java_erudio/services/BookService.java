@@ -5,7 +5,6 @@ import br.com.junior.rest_with_spring_boot_and_java_erudio.data.dto.v1.BookDTO;
 import br.com.junior.rest_with_spring_boot_and_java_erudio.mapper.BookMapper;
 import br.com.junior.rest_with_spring_boot_and_java_erudio.model.Book;
 import br.com.junior.rest_with_spring_boot_and_java_erudio.repositories.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,11 +16,14 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @Service
 public class BookService {
 
-    @Autowired
-    private BookRepository repository;
 
-    @Autowired
-    private BookMapper mapper;
+    private final BookRepository repository;
+    private final BookMapper mapper;
+
+    public BookService(BookRepository repository, BookMapper mapper) {
+        this.repository = repository;
+        this.mapper = mapper;
+    }
 
     public BookDTO findById(Long id) {
         Book book = repository.findById(id)

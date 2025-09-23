@@ -146,36 +146,39 @@ class PersonServicesTest {
         assertNotNull(personOne.getId());
         assertNotNull(personOne.getLinks());
 
+        String path1 = "/api/person/v1/1";
         assertNotNull(personOne.getLinks().stream()
                 .anyMatch(link -> link.getRel().value().equals("self")
-                        && link.getHref().endsWith("/api/person/v1/1")
+                        && link.getHref().endsWith(path1)
                         && link.getType().equals("GET")
                 ));
 
+        String path = "/api/person/v1";
+
         assertNotNull(personOne.getLinks().stream()
                 .anyMatch(link -> link.getRel().value().equals("findAll")
-                        && link.getHref().endsWith("/api/person/v1")
+                        && link.getHref().endsWith(path)
                         && link.getType().equals("GET")
                 )
         );
 
         assertNotNull(personOne.getLinks().stream()
                 .anyMatch(link -> link.getRel().value().equals("create")
-                        && link.getHref().endsWith("/api/person/v1")
+                        && link.getHref().endsWith(path)
                         && link.getType().equals("POST")
                 )
         );
 
         assertNotNull(personOne.getLinks().stream()
                 .anyMatch(link -> link.getRel().value().equals("update")
-                        && link.getHref().endsWith("/api/person/v1")
+                        && link.getHref().endsWith(path)
                         && link.getType().equals("PUT")
                 )
         );
 
         assertNotNull(personOne.getLinks().stream()
                 .anyMatch(link -> link.getRel().value().equals("delete")
-                        && link.getHref().endsWith("/api/person/v1/1")
+                        && link.getHref().endsWith(path1)
                         && link.getType().equals("DELETE")
                 )
         );
@@ -199,21 +202,21 @@ class PersonServicesTest {
 
         assertNotNull(personFour.getLinks().stream()
                 .anyMatch(link -> link.getRel().value().equals("findAll")
-                        && link.getHref().endsWith("/api/person/v1")
+                        && link.getHref().endsWith(path)
                         && link.getType().equals("GET")
                 )
         );
 
         assertNotNull(personFour.getLinks().stream()
                 .anyMatch(link -> link.getRel().value().equals("create")
-                        && link.getHref().endsWith("/api/person/v1")
+                        && link.getHref().endsWith(path)
                         && link.getType().equals("POST")
                 )
         );
 
         assertNotNull(personFour.getLinks().stream()
                 .anyMatch(link -> link.getRel().value().equals("update")
-                        && link.getHref().endsWith("/api/person/v1")
+                        && link.getHref().endsWith(path)
                         && link.getType().equals("PUT")
                 )
         );
@@ -244,21 +247,21 @@ class PersonServicesTest {
 
         assertNotNull(personSeven.getLinks().stream()
                 .anyMatch(link -> link.getRel().value().equals("findAll")
-                        && link.getHref().endsWith("/api/person/v1")
+                        && link.getHref().endsWith(path)
                         && link.getType().equals("GET")
                 )
         );
 
         assertNotNull(personSeven.getLinks().stream()
                 .anyMatch(link -> link.getRel().value().equals("create")
-                        && link.getHref().endsWith("/api/person/v1")
+                        && link.getHref().endsWith(path)
                         && link.getType().equals("POST")
                 )
         );
 
         assertNotNull(personSeven.getLinks().stream()
                 .anyMatch(link -> link.getRel().value().equals("update")
-                        && link.getHref().endsWith("/api/person/v1")
+                        && link.getHref().endsWith(path)
                         && link.getType().equals("PUT")
                 )
         );
