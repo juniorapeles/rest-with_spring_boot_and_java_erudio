@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// @CrossOrigin(origins = "http://localhost:8080") // a nivel de controller somente para aquele endereço
 @RestController
 @RequestMapping(BookController.PATH_URL)
 @Tag(name = "Books", description = "Endpoints for Managing Books")

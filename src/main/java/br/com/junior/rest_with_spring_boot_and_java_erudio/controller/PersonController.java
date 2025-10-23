@@ -21,6 +21,7 @@ public class PersonController implements PersonControllerDocs {
     @Autowired
     private PersonServices service;
 
+    //    @CrossOrigin(origins = {"http://localhost:8080"})
     @GetMapping(value = PATH_ID,
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE,
                     MediaType.APPLICATION_YAML_VALUE})
@@ -29,6 +30,7 @@ public class PersonController implements PersonControllerDocs {
         return service.findById(id);
     }
 
+    //    @CrossOrigin(origins = {"http://localhost:8080"})
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE,
             MediaType.APPLICATION_YAML_VALUE})
     @Override
@@ -36,6 +38,7 @@ public class PersonController implements PersonControllerDocs {
         return service.findAll();
     }
 
+    //    @CrossOrigin(origins = {"http://portifolio.juniorapeles.xyz","http://localhost:8080"})
     @PostMapping(
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE})
@@ -44,6 +47,7 @@ public class PersonController implements PersonControllerDocs {
         return service.create(person);
     }
 
+    //    @CrossOrigin(origins = {"http://localhost:8080"})
     @PutMapping(
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE})
@@ -52,6 +56,7 @@ public class PersonController implements PersonControllerDocs {
         return service.updatePerson(person);
     }
 
+    //    @CrossOrigin(origins = {"http://localhost:8080"})
     @DeleteMapping(value = PATH_ID)
     @Override
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {

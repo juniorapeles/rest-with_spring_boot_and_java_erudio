@@ -1,19 +1,26 @@
+server:
+  port: 8080
+cors:
+  originPatterns: >
+    http://localhost:8080,
+    https://localhost:3000,
+    http://api.juniorapeles.xyz
+
 spring:
   application:
     name: rest-with-spring-boot-and-java-erudio
   datasource:
     driver-class-name: org.postgresql.Driver
-
-    url: jdbc:postgresql://192.168.24.6:5432/rest_with_spring_boot_erudio
-    username: spring_user
-    password: SuaSenhaSegura123
+    url: jdbc:postgresql://localhost:5432/rest_with_spring_boot_erudio
+    username: postgres
+    password: pass
   jpa:
     hibernate:
       ddl-auto: none
     properties:
       hibernate:
-        #dialect: org.hibernate.dialect.PostgreSQLDialect
-        #show_sql: true
+      #dialect: org.hibernate.dialect.PostgreSQLDialect
+      #show_sql: true
     open-in-view: false
 logging:
   level:
