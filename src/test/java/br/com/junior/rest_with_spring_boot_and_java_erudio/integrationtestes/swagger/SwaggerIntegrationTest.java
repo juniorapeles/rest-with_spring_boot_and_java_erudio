@@ -16,7 +16,7 @@ class SwaggerIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void shouldDisplaySwaggerUIPage() {
-        String content = RestAssured.given()
+        var content = RestAssured.given()
                 .baseUri("http://localhost")
                 .port(TestConfigs.SERVER_PORT)
                 .when()
