@@ -56,6 +56,14 @@ public class PersonController implements PersonControllerDocs {
         return service.updatePerson(person);
     }
 
+    @PatchMapping(value = PATH_ID,
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_YAML_VALUE})
+    @Override
+    public PersonDTO disablePerson(@PathVariable("id") Long id){
+        return service.disablePerson(id);
+    }
+
     //    @CrossOrigin(origins = {"http://localhost:8080"})
     @DeleteMapping(value = PATH_ID)
     @Override
